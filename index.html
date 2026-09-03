@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>I Love You Misti ❤️</title>
+
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffe5e5 0%,
+                    #ffb6c1 100%
+                );
+
+            overflow: hidden;
+
+            transition: background 0.5s ease;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+
+            width: 90%;
+            max-width: 500px;
+
+            max-height: 95vh;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            background:
+                rgba(255, 255, 255, 0.65);
+
+            backdrop-filter: blur(10px);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(233, 30, 99, 0.2);
+
+            overflow-y: auto;
+        }
+
+
+        .container::-webkit-scrollbar {
+            width: 0;
+        }
+
+
+        /* ================= PROPOSAL SCREENS ================= */
+
+        .proposal-screen {
+
+            display: none;
+
+            width: 100%;
+
+            animation:
+                fadeIn 0.6s ease;
+        }
+
+
+        @keyframes fadeIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px)
+                    scale(0.95);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* ================= PHOTO ================= */
+
+        .photo-box {
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-bottom: 15px;
+        }
+
+
+        .photo-box img {
+
+            width: 180px;
+            height: 180px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid white;
+
+            box-shadow:
+                0 10px 20px
+                rgba(233, 30, 99, 0.2);
+        }
+
+
+        /* ================= TEXT ================= */
+
+        h1 {
+
+            color: #d81b60;
+
+            font-family:
+                'Pacifico',
+                cursive;
+
+            font-size: 2.4rem;
+
+            margin: 10px 0;
+
+            text-shadow:
+                2px 2px 4px
+                rgba(0, 0, 0, 0.05);
+        }
+
+
+        p {
+
+            color: #4a4a4a;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-size: 1.15rem;
+
+            font-weight: 500;
+
+            margin-bottom: 25px;
+
+            line-height: 1.5;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .btn {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            width: 100%;
+        }
+
+
+        .btn a {
+
+            text-decoration: none;
+
+            color: white;
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            font-weight: 600;
+
+            font-size: 1.1rem;
+
+            padding: 12px 35px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    45deg,
+                    #ff4081,
+                    #e91e63
+                );
+
+            box-shadow:
+                0 8px 15px
+                rgba(233, 30, 99, 0.3);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .btn a:hover {
+
+            transform:
+                translateY(-3px)
+                scale(1.05);
+        }
+
+
+        /* ================= NO BUTTON ================= */
+
+        #move-random {
+
+            background: #9e9e9e !important;
+
+            box-shadow:
+                0 8px 15px
+                rgba(158, 158, 158, 0.3);
+
+            z-index: 9999;
+
+            transition: none;
+        }
+
+
+        /* ================= LOVE TITLE ================= */
+
+        .love-title {
+
+            font-family:
+                'Pacifico',
+                cursive;
+
+            font-size: 2.3rem;
+
+            color: #e91e63;
+
+            margin-bottom: 20px;
+
+            text-shadow:
+                2px 2px 5px
+                rgba(233, 30, 99, 0.2);
+
+            animation:
+                lovePulse 1.5s infinite;
+        }
+
+
+        @keyframes lovePulse {
+
+            0%,
+            100% {
+
+                transform: scale(1);
+            }
+
+            50% {
+
+                transform: scale(1.08);
+            }
+        }
+
+
+        /* ================= LOVE LETTER ================= */
+
+        .love-letter {
+
+            margin-top: 25px;
+
+            padding: 25px 22px;
+
+            background:
+                rgba(255, 255, 255, 0.85);
+
+            border-radius: 20px;
+
+            border:
+                2px solid
+                rgba(233, 30, 99, 0.15);
+
+            box-shadow:
+                0 8px 20px
+                rgba(233, 30, 99, 0.12);
+
+            text-align: left;
+
+            position: relative;
+        }
+
+
+        .love-letter::before {
+
+            content: "💌";
+
+            position: absolute;
+
+            top: -20px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            font-size: 35px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            padding: 5px;
+        }
+
+
+        .letter-title {
+
+            text-align: center;
+
+            font-family:
+                'Pacifico',
+                cursive;
+
+            color: #e91e63;
+
+            font-size: 1.7rem;
+
+            margin-bottom: 18px;
+
+            margin-top: 5px;
+        }
+
+
+        .love-letter p {
+
+            font-family:
+                'Poppins',
+                sans-serif;
+
+            color: #555;
+
+            font-size: 1rem;
+
+            line-height: 1.8;
+
+            margin-bottom: 14px;
+
+            font-weight: 400;
+        }
+
+
+        .letter-sign {
+
+            text-align: right;
+
+            color: #d81b60;
+
+            font-family:
+                'Pacifico',
+                cursive;
+
+            font-size: 1.3rem;
+
+            margin-top: 15px;
+        }
+
+
+        /* ================= FLOATING HEARTS ================= */
+
+        .heart {
+
+            position: fixed;
+
+            bottom: -30px;
+
+            pointer-events: none;
+
+            animation:
+                floatHeart 5s linear forwards;
+
+            z-index: 10000;
+        }
+
+
+        @keyframes floatHeart {
+
+            from {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            to {
+
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 500px) {
+
+            .container {
+
+                width: 94%;
+
+                padding: 30px 15px;
+
+                max-height: 94vh;
+            }
+
+
+            .photo-box img {
+
+                width: 150px;
+                height: 150px;
+            }
+
+
+            h1 {
+
+                font-size: 2rem;
+            }
+
+
+            .love-title {
+
+                font-size: 1.9rem;
+            }
+
+
+            p {
+
+                font-size: 1rem;
+            }
+
+
+            .btn a {
+
+                font-size: 1rem;
+
+                padding:
+                    10px 28px;
+            }
+
+
+            .love-letter {
+
+                padding:
+                    22px 17px;
+            }
+
+
+            .letter-title {
+
+                font-size: 1.5rem;
+            }
+
+
+            .love-letter p {
+
+                font-size: 0.95rem;
+
+                line-height: 1.7;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- ================================================= -->
+    <!-- SCREEN 1 -->
+    <!-- ================================================= -->
+
+    <div id="proposal-1"
+         class="proposal-screen">
+
+
+        <div class="photo-box">
+
+            <img
+                src="https://i.ibb.co/mCpLQyBr/123.gif"
+                alt="Cute Proposal">
+
+        </div>
+
+
+        <h1>
+            Hey Misti! 💖
+        </h1>
+
+
+        <p>
+
+            I love you more than anything.
+            <br>
+
+            Will you be mine forever?
+
+        </p>
+
+
+        <div class="btn">
+
+
+            <a href="#"
+               onclick="
+               showProposal('proposal-yes');
+               return false;">
+
+                💖 Yes
+
+            </a>
+
+
+            <a href="#"
+               onclick="
+               showProposal('proposal-2');
+               return false;">
+
+                💔 No
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- SCREEN 2 -->
+    <!-- ================================================= -->
+
+    <div id="proposal-2"
+         class="proposal-screen">
+
+
+        <div class="photo-box">
+
+            <img
+                src="https://i.ibb.co/kgBnKJKc/Tkthao219-Bubududu-Sticker-Tkthao219-Bubududu-Panda-Discover-Share-GIFs.gif"
+                alt="Sad">
+
+        </div>
+
+
+        <h1>
+            Are you sure? 🥺
+        </h1>
+
+
+        <p>
+
+            You mean everything to me.
+            <br>
+
+            Please say yes!
+
+        </p>
+
+
+        <div class="btn">
+
+
+            <a href="#"
+               onclick="
+               showProposal('proposal-yes');
+               return false;">
+
+                🥰 Yes
+
+            </a>
+
+
+            <a href="#"
+               onclick="
+               showProposal('proposal-3');
+               return false;">
+
+                😢 No
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- SCREEN 3 -->
+    <!-- ================================================= -->
+
+    <div id="proposal-3"
+         class="proposal-screen">
+
+
+        <div class="photo-box">
+
+            <img
+                src="https://i.ibb.co/zVTNtrkR/Llorar-funny-gifs-for-all-of-cats-dogs-and-every-thinngs.gif"
+                alt="Crying">
+
+        </div>
+
+
+        <h1>
+            My heart is breaking... 💔
+        </h1>
+
+
+        <p>
+
+            I can't imagine my life without you.
+            <br>
+
+            Please give us a chance!
+
+        </p>
+
+
+        <div class="btn">
+
+
+            <a href="#"
+               onclick="
+               showProposal('proposal-yes');
+               return false;">
+
+                😍 Yes
+
+            </a>
+
+
+            <a href="#"
+               onclick="
+               showProposal('proposal-4');
+               return false;">
+
+                😭 No
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- SCREEN 4 -->
+    <!-- ================================================= -->
+
+    <div id="proposal-4"
+         class="proposal-screen">
+
+
+        <div class="photo-box">
+
+            <img
+                src="https://i.ibb.co/1GSxYwVm/Bubu-Bubu-Dudu-Sticker-Bubu-Bubu-dudu-Love-Discover-Share-GIFs.gif"
+                alt="Begging">
+
+        </div>
+
+
+        <h1>
+            Don't leave me... 😭
+        </h1>
+
+
+        <p>
+
+            You're my everything.
+            <br>
+
+            Please say yes and make me
+            the happiest person!
+
+        </p>
+
+
+        <div class="btn">
+
+
+            <a href="#"
+               onclick="
+               showProposal('proposal-yes');
+               return false;">
+
+                ❤️ Yes
+
+            </a>
+
+
+            <!-- MOVING NO BUTTON -->
+
+            <a href="#"
+               id="move-random">
+
+                💔 No
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- FINAL YES SCREEN -->
+    <!-- ================================================= -->
+
+    <div id="proposal-yes"
+         class="proposal-screen">
+
+
+        <!-- LOVE TITLE -->
+
+        <div class="love-title">
+
+            I Love You Misti ❤️
+
+        </div>
+
+
+        <!-- HAPPY GIF -->
+
+        <div class="photo-box">
+
+            <img
+                src="https://i.ibb.co/YBRQv15G/5.gif"
+                alt="Happy">
+
+        </div>
+
+
+        <h1>
+
+            You said YES! 🥰
+
+        </h1>
+
+
+        <p>
+
+            I love you, Misti.
+            <br>
+
+            Let's make forever amazing! 💞
+
+        </p>
+
+
+        <!-- ================================================= -->
+        <!-- LOVE LETTER -->
+        <!-- ================================================= -->
+
+        <div class="love-letter">
+
+
+            <div class="letter-title">
+
+                My Dear Misti ❤️
+
+            </div>
+
+
+            <p>
+
+                My love,
+
+            </p>
+
+
+            <p>
+
+                I don't know if words can ever truly
+                explain how special you are to me.
+                Since you came into my life, everything
+                feels a little brighter, happier and
+                more beautiful. ❤️
+
+            </p>
+
+
+            <p>
+
+                You are not just someone I love.
+                You are the person I want to laugh with,
+                make memories with, support through
+                everything and keep beside me for
+                a very, very long time.
+
+            </p>
+
+
+            <p>
+
+                I promise to always appreciate you,
+                listen to you, make you smile and
+                stand beside you through the good days
+                and the difficult ones.
+
+            </p>
+
+
+            <p>
+
+                Thank you for being you, Misti.
+                Thank you for coming into my life
+                and making it so much more beautiful.
+
+            </p>
+
+
+            <p>
+
+                I hope this is just the beginning
+                of our beautiful story. 💕
+                I want to create countless memories
+                with you and make our forever amazing.
+
+            </p>
+
+
+            <p>
+
+                No matter where life takes us,
+                I hope we always find our way back
+                to each other.
+
+            </p>
+
+
+            <div class="letter-sign">
+
+                Forever yours ❤️<br>
+                With all my love 💖
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* ================================================= */
+    /* SHOW SCREEN */
+    /* ================================================= */
+
+    function showProposal(id) {
+
+
+        // Hide all screens
+
+        document
+            .querySelectorAll(".proposal-screen")
+            .forEach(function(screen) {
+
+                screen.style.display = "none";
+
+            });
+
+
+        // Show selected screen
+
+        const screen =
+            document.getElementById(id);
+
+
+        if (screen) {
+
+            screen.style.display = "block";
+
+        }
+
+
+        /* ================= YES ================= */
+
+        if (id === "proposal-yes") {
+
+
+            document.body.style.background =
+                "linear-gradient(135deg, #ffecf0, #ffc0cb)";
+
+
+            // Confetti
+
+            if (typeof confetti === "function") {
+
+                confetti({
+
+                    particleCount: 250,
+
+                    spread: 100,
+
+                    startVelocity: 30,
+
+                    origin: {
+                        y: 0.5
+                    },
+
+                    colors: [
+                        "#ff0000",
+                        "#ff69b4",
+                        "#ffc0cb",
+                        "#ffffff"
+                    ]
+
+                });
+
+            }
+
+
+            // Floating hearts
+
+            createHearts();
+
+        }
+
+    }
+
+
+
+    /* ================================================= */
+    /* MOVE NO BUTTON */
+    /* ================================================= */
+
+    function moveNoButton() {
+
+
+        const button =
+            document.getElementById("move-random");
+
+
+        if (!button) return;
+
+
+        // Make button fixed
+
+        button.style.position = "fixed";
+
+
+        // Get screen size
+
+        const buttonWidth =
+            button.offsetWidth;
+
+
+        const buttonHeight =
+            button.offsetHeight;
+
+
+        const maxX =
+            window.innerWidth -
+            buttonWidth -
+            15;
+
+
+        const maxY =
+            window.innerHeight -
+            buttonHeight -
+            15;
+
+
+        // Random position
+
+        const randomX =
+            Math.max(
+                10,
+                Math.random() * maxX
+            );
+
+
+        const randomY =
+            Math.max(
+                10,
+                Math.random() * maxY
+            );
+
+
+        button.style.left =
+            randomX + "px";
+
+
+        button.style.top =
+            randomY + "px";
+
+    }
+
+
+
+    /* ================================================= */
+    /* FLOATING HEARTS */
+    /* ================================================= */
+
+    function createHearts() {
+
+
+        for (let i = 0; i < 25; i++) {
+
+
+            setTimeout(function() {
+
+
+                const heart =
+                    document.createElement("div");
+
+
+                heart.className =
+                    "heart";
+
+
+                const hearts = [
+                    "❤️",
+                    "💕",
+                    "💖",
+                    "💗",
+                    "💓",
+                    "💞"
+                ];
+
+
+                heart.innerHTML =
+                    hearts[
+                        Math.floor(
+                            Math.random()
+                            * hearts.length
+                        )
+                    ];
+
+
+                heart.style.left =
+                    Math.random() * 100 + "vw";
+
+
+                heart.style.fontSize =
+                    (15 +
+                    Math.random() * 25)
+                    + "px";
+
+
+                heart.style.animationDuration =
+                    (3 +
+                    Math.random() * 4)
+                    + "s";
+
+
+                document.body
+                    .appendChild(heart);
+
+
+                setTimeout(function() {
+
+                    heart.remove();
+
+                }, 7000);
+
+
+            }, i * 150);
+
+        }
+
+    }
+
+
+
+    /* ================================================= */
+    /* PAGE LOADED */
+    /* ================================================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+
+            // Show first screen
+
+            showProposal(
+                "proposal-1"
+            );
+
+
+            // Get moving No button
+
+            const noButton =
+                document.getElementById(
+                    "move-random"
+                );
+
+
+            if (noButton) {
+
+
+                /* DESKTOP */
+
+                noButton.addEventListener(
+                    "mouseenter",
+                    function() {
+
+                        moveNoButton();
+
+                    }
+                );
+
+
+                /* MOBILE */
+
+                noButton.addEventListener(
+                    "touchstart",
+                    function(ev
